@@ -2,6 +2,10 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// Set the port as process PORT in heroku
+// In local environment PORT will be 3000
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -19,6 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// In case of the system is on maintenance
 // app.use((req, res, next) => {
 //   res.render('maintenance.hbs');
 // });
@@ -54,6 +59,6 @@ app.get('/bad', (req, res) => {
   res.send(badObj);
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
