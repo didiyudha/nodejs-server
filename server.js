@@ -59,6 +59,14 @@ app.get('/bad', (req, res) => {
   res.send(badObj);
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact.hbs', {
+    pageTitle: 'Contact Page',
+    phone: '081276065691',
+    address: 'Jakarta'
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
